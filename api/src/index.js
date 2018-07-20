@@ -2,11 +2,22 @@
 
 import express from 'express';
 import path from 'path';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import auth from './routes/auth';
+import dotenv from 'dotenv';
+import Promise from 'bluebird';
 
+dotenv.config();
 const app = express();
-app.post('/api/auth',(req,res)=>{
-	res.status(400).json({ errors: { global:"Invalid "}})
-})
+app.use(bodyParser.json());
+mongoose.Promise = Promise;
+//MongoDb default connection port is 27017 and bookworm is the collection name, User is the document name.
+mongoose.connect(process.env.MONGODB_URL,{ useNewUrlParser: true });
+
+//We are mounting the auth middleware function at api/auth adress
+app.use('/api/auth', auth);
+
 app.get('/*',(req,res) => {
 	res.sendFile(path.join(__dirname, 'index.html'));
 
