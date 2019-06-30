@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import Validator from 'validator';
 import InlineError from "../messages/InlineError";
 class LoginForm extends React.Component{
-
+/*
+Sets initial state and empty 
+*/
 state = {
     data:
 	    {  email:'',
@@ -73,7 +75,7 @@ return (
 	      />
 	      {errors.password && <InlineError text={errors.password}/>}
 	   </Form.Field>   
-	  <button class="ui primary button">Login</button>
+	  <Button primary>Login</Button>
 	</Form>
   );
 }

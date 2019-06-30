@@ -13,6 +13,7 @@ const app = express();
 app.use(bodyParser.json());
 mongoose.Promise = Promise;
 //MongoDb default connection port is 27017 and bookworm is the collection name, User is the document name.
+//Setting up  Environment vaiable
 mongoose.connect(process.env.MONGODB_URL,{ useNewUrlParser: true });
 
 //We are mounting the auth middleware function at api/auth adress

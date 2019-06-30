@@ -8,7 +8,7 @@ export const userLoggedIn = (user) => ({
 export const userLoggedOut = () => ({
 	type: USER_LOGGED_OUT
 });
-//api request contained in the object 'api'and .then is to handle the promise obtained to dispatch the action type userLoggedIn
+//api request contained in the object 'api'and .then is to handle the promise obtained to dispatch the action type userLoggedIn this action will be handled by the reducer that can make changes to state of the object
 export const login =(credentials) => (dispatch) => 
      api.user.login(credentials).then(user => {
      	localStorage.bookwormJWT = user.token;      //storing the token in local storage coz if we reload the app the state becomes null and inorder to

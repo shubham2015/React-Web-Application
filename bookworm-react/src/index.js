@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
+import {BrowserRouter,Route} from 'react-router-dom';
 import {Provider}  from 'react-redux';
 import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
@@ -19,9 +20,11 @@ if( localStorage.bookwormJWT){                          //if the local storage h
 }
 
 ReactDOM.render(
+	<BrowserRouter>
 	<Provider store={store}>
-    <App />
-    </Provider>,
+     <Route component ={App} />
+    </Provider>
+    </BrowserRouter>,
 	document.getElementById('root')
    );
 registerServiceWorker();

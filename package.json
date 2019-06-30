@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-core": "^6.26.3",
     "prop-types": "^15.6.2",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
@@ -24,5 +25,17 @@
   },
   "devDependencies": {
     "redux-devtools-extension": "^2.13.5"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shubham2015/React-Web-Application.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shubham2015/React-Web-Application/issues"
+  },
+  "homepage": "https://github.com/shubham2015/React-Web-Application#readme"
 }
