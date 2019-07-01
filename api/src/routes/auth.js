@@ -1,3 +1,5 @@
+
+// Action to Login the user by validating if he is the valid user
 import express from 'express';
 
 //Model/User will hold details of user based on email and password which is meant to be a schema
