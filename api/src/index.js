@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import auth from './routes/auth';
 import users from './routes/users';
+import books from './routes/books';
 import dotenv from 'dotenv';
 import Promise from 'bluebird';
 
@@ -18,10 +19,14 @@ mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGODB_URL,{ useNewUrlParser: true });
 
 //We are mounting the auth middleware function at api/auth adress
-app.use('/api/auth', auth);
-console.log("mat");
-app.use('/api/users', users);
 
+//  ./api/auth for user log in
+app.use('/api/auth', auth);
+//console.log("mat");
+
+// ./api/users for user sign up
+app.use('/api/users', users);
+app.use('/api/books',books);
 app.get('/*',(req,res) => {
 	res.sendFile(path.join(__dirname, 'index.html'));
 

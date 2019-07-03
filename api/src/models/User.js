@@ -15,7 +15,8 @@ const schema = new mongoose.Schema(
            index: true,
             unique: true},
 	passwordHash: { type: String, required: true },
-  confirmed: {type: Boolean, default:false}
+  confirmed: {type: Boolean, default:false},
+  confimationToken: { type: String, default: ""}
 },{timestamps:true}
 );
 
@@ -23,6 +24,10 @@ const schema = new mongoose.Schema(
 schema.methods.isValidPassword = function isValidPassword(password){
 	return bcrypt.compareSync(password,this.passwordHash);
 };
+/*schema.methods.setConfirmationToken = function setConfirmationToken(){
+  this.confirmationToken = this.generateJWT();
+};
+*/
 
 schema.methods.setPassword = function setPassword(password){
   
@@ -48,7 +53,7 @@ schema.methods.toAuthjson = function toAuthjson()
   console.log("M getting calles");
   return{
   	email: this.email,
-    confirmed:this.confirmed,
+    confirmed:false,
   	token: this.generateJWT()
   };
 };

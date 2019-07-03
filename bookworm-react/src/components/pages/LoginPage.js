@@ -1,12 +1,13 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import {Route,Link} from 'react-router-dom';
 import LoginForm from '../forms/LoginForm';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {login} from '../../actions/auth';
+
 class LoginPage extends React.Component {
 
-
+ // We call the login action in auth.js         
     submit = (data) => this.props.login(data).then(() => this.props.history.push("/"));                  //Fetch login from user and then use Promise to send to home page
     
 	render() {
@@ -14,7 +15,8 @@ class LoginPage extends React.Component {
 		return(
           <div>
           <h1> Login Page </h1>
-          <LoginForm submit={this.submit}/>                
+          <LoginForm submit={this.submit}/>     
+          <Link to ="/forgot_password"> Forgot Password</Link>           
           </div>
 	          );
 	}
