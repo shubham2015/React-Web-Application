@@ -25,7 +25,7 @@ class SearchBookForm extends React.Component{
    
     onChange=(e,data)=>{
       this.setState({query:data.values});
-      this.props.onBookSelect(this.state.books[data.value]);
+      this.props.onBookSelect(this.state.books[data.value]); 
     }
    // This is where we make request to server to invoke the API request to goodreads
    fetchOptions = () => {

@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import {logout} from "../../actions/auth";
 import Dashboard from './Dashboard';
 import Example from './Example';
+
 //We are getting state info from redux whether is authenticated or not and if he is authenticated then provide him button for 
 //logout, if not then provide him signup form 
 
@@ -15,7 +16,7 @@ import Example from './Example';
 const HomePage = ({ isAuthenticated, logout }) => (
   <div>
     <h1>Home Page</h1>
-  
+     
     {isAuthenticated ? (
       <div>
        <Dashboard/>

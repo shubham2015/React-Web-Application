@@ -19,7 +19,6 @@ UserRoute.propTypes = {
 };
 
 function mapStateToProps(state) {
-  console.log(!!state.user.token)
   return {
     isAuthenticated: !!state.user.token
   };

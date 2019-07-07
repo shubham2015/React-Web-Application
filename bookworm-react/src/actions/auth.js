@@ -19,6 +19,7 @@ export const login =(credentials) => (dispatch) =>
         //console.log("User logg",user);
      	localStorage.bookwormJWT = user.token;      //storing the token in local storage coz if we reload the app the state becomes null and inorder to
     setAuthorization(user.token);
+     console.log("User trying to log in",user);
      dispatch(userLoggedIn(user))                //keep the state  intact we use the local storage to save it for furthur references.
      }); 
 export const logout =() => (dispatch) => {

@@ -5,17 +5,30 @@ import ConfirmEmailMessage from '../messages/ConfirmEmailMessage';
 import TopNavigation from '../navigation/TopNavigation';
 import { allBooksSelector } from '../../reducers/books';
 import AddBookCtA from '../ctA/AddBookCtA';
-//import { fetchBooks } from "../../actions/books";
+import {fetchBooks} from '../../actions/books';
+import LoadBooks from './LoadBooks';
 
-const Dashboard = ({isConfirmed,username,books}) =>(
+class Dashboard extends React.Component {
+  componentDidMount =() =>{
+  	 this.onInit(this.props);	 
+  }
 
-	<div>
-	    
-      {<ConfirmEmailMessage username={username} />}
-      {books.length === 0 && <AddBookCtA/>}
-      <p>Welcome Bro </p>
-	</div>
-);
+  // Thunk action to place the initial data into redux store
+  onInit = (props) =>props.fetchBooks();	
+  
+
+	render(){
+		const{isConfirmed,books,username} = this.props;
+		return(
+      <div>
+       <h1> Welcome Home {username} </h1>
+	     {<ConfirmEmailMessage username={username} />}
+         {books.length === 0 ? <AddBookCtA/> : <LoadBooks load={books}/>}
+	     </div>
+	);
+	}
+}  
+
 
 Dashboard.propTypes ={
 	isConfirmed: PropTypes.bool.isRequired,
@@ -27,11 +40,12 @@ Dashboard.propTypes ={
 }
 
 function mapStateToProps(state){
+  console.log(allBooksSelector(state));
   return{
 	isConfirmed: !!state.user.confirmed,
-	username: state.user.name,
 	books:allBooksSelector(state)
 }
 }
 
-export default connect(mapStateToProps)(Dashboard);
+
+export default connect(mapStateToProps,{fetchBooks})(Dashboard);

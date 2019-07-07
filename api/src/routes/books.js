@@ -2,13 +2,23 @@ import express from 'express';
 import authenticate from '../middleware/authenticate';
 import request from 'request-promise';
 import { parseString } from 'xml2js';
-import util from 'util'; 
+import parseErrors from '../utils/parseErrors';
+import Book from '../models/Book';
 const router = express.Router();
-
-
-
-
+// Store the info abt the book in the user database for an initial user
 router.use(authenticate);
+
+//Return all books based on the user id inputed
+router.get('/',(req,res)=>{
+	Book.find({userId: req.currentUser._id}).then(books => res.json({books}))
+});
+
+router.post("/", (req, res) => {
+   // console.log("Requesting this for post",req.body.books);
+  Book.create({ ...req.body.book, userId: req.currentUser._id })
+    .then(book => res.json({ book }))
+    .catch(err => res.status(400).json({ errors: parseErrors(err.errors) }));
+});
 
 router.get("/search",(req,res) =>{
 	//console.log("Recei",req.query.q);
@@ -32,26 +42,7 @@ request.get('https://www.goodreads.com/search/index.xml?key=d1bDDVvzjMwXulOE9oEP
          	)
         );
 
-/*books:[	
-   {
-   	goodreadsId:1,
-    title:"1984",
-    author:"chris",
-    covers:[
-    "http://images"
-    ],
-   pages: 200
-   },
-    {
-   	goodreadsId:1,
-    title:"cohlen",
-    author:"nolan",
-    covers:[
-    "http://images"
-    ],
-   pages: 200
-   }
-   ]*/
+
 
 });
 
