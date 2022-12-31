@@ -13,7 +13,7 @@
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4",
+    "react-scripts": "5.0.1",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
@@ -28,9 +28,9 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "css-loader": "^3.0.0",
+    "css-loader": "^6.7.3",
     "redux-devtools-extension": "^2.13.5",
-    "style-loader": "^0.23.1"
+    "style-loader": "^3.3.1"
   },
   "proxy": "http://localhost:3200/"
 }
